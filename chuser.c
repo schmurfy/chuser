@@ -29,7 +29,7 @@ int main(int argc, char const *argv[])
   int len, n = 0;
   
   if( argc < 4)
-    err("Usage: %s <user> <group> <cmd>\n", argv[0]);
+    err("Version: 1.0\nUsage: %s <user> <group> <cmd>\n", argv[0]);
     
   account = *++argv;
   group = *++argv;
