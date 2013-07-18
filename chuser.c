@@ -52,13 +52,15 @@ int main(int argc, char const *argv[])
   if( !pw )
     err("Unknown user: %s\n", account);
   
-  grp = getgrnam(group);
-  if( !grp )
-    err("Unknown group: %s\n", group);
-  
-  
-  if( setgid(grp->gr_gid) == -1 )
-    err("Cannot change gid: %s\n", strerror(errno));
+  if( strcmp(group, "_") ){
+    grp = getgrnam(group);
+    if( !grp )
+      err("Unknown group: %s\n", group);
+    
+    
+    if( setgid(grp->gr_gid) == -1 )
+      err("Cannot change gid: %s\n", strerror(errno));
+  }
   
   if( setuid(pw->pw_uid) == -1 )
     err("Cannot change uid: %s\n", strerror(errno));
